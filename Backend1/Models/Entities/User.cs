@@ -7,7 +7,6 @@ namespace Backend1.Models.Entities
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        
         public string? id { get; set; }
         public string? name { get; set; }
         public string? password { get; set; }

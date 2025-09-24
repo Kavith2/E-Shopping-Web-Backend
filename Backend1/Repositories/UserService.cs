@@ -16,16 +16,19 @@ namespace Backend1.Repositories
             _users = context.Users;
         }
 
+
         public List<User> GetAllUsers()
         {
             return _users.Find(user => true).ToList();
         }
+
 
         public void AddUser(User user)
         {
             user.password = BCrypt.Net.BCrypt.HashPassword(user.password);
             _users.InsertOne(user);
         }
+
 
         public async Task<User?> Authenticate(string email, string password)
         {
@@ -36,7 +39,6 @@ namespace Backend1.Repositories
 
             return user;
         }
-
 
 
         public async Task<User?> UpdateUser(string id, User updatedUser)
@@ -65,7 +67,6 @@ namespace Backend1.Repositories
             return new OkObjectResult($"User with ID {id} deleted successfully.");
         }
 
-       
 
         public async Task<User?> GetByUserName(string username)
         {
