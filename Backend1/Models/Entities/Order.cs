@@ -13,7 +13,6 @@ namespace Backend1.Models.Entities
         public string UserId { get; set; }
 
         [BsonElement("totalPrice")]
-
         public int TotalPrice { get; set; }
 
         [BsonElement("items")]
