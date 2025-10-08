@@ -16,10 +16,12 @@ namespace Backend1.Repositories
             _products = context.Products;
         }
 
+
         public void AddProduct(List<Product> product)
         {
             _products.InsertMany(product);
         }
+
 
         public  async Task<Product?> UpdateProduct(string id,Product updatedProduct)
         {
@@ -34,21 +36,24 @@ namespace Backend1.Repositories
             var result = await _products.UpdateOneAsync(filter, update);    
             return result.ModifiedCount > 0 ? updatedProduct : null;
         }
+
+
         public Task<IActionResult> DeleteProduct(string id)
         {
             throw new NotImplementedException();
         }
+
 
         public List<Product> GetProductsByCategory(string category)
         {
             return _products.Find(p => p.Category == category).ToList();
         }
 
+
         public List<Product> GetAllProducts()
         {
             return _products.Find(p => true).ToList();
         }
-
 
 
         public async Task<Product?> GetById(string id)

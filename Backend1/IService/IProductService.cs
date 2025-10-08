@@ -8,10 +8,8 @@ namespace Backend1.IService
         List<Product> GetAllProducts();
         void AddProduct(List<Product> product);
         Task<Product?> UpdateProduct(string id, Product updatedProduct);
-
         Task<IActionResult> DeleteProduct(string id);
         Task<Product?> GetById(string id);
-
         List<Product> GetProductsByCategory(string category);
 
     }

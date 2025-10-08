@@ -1,6 +1,7 @@
 ﻿using Backend1.Data;
 using Backend1.IService;
 using Backend1.Models.Entities;
+using Microsoft.EntityFrameworkCore;
 using MongoDB.Bson;
 using MongoDB.Driver;
 
@@ -11,9 +12,12 @@ namespace Backend1.Repositories
 
         private readonly IMongoCollection<Cart> _cart;
 
+        private readonly IMongoCollection<Order> _order;
+
         public CartService(MongoDBContext _context)
         {
             _cart = _context.Cart;
+            _order = _context.Orders;
         }
 
         public async Task<Cart?> GetCartByUserId(string userId)
@@ -63,6 +67,38 @@ namespace Backend1.Repositories
             cart.Items.RemoveAll(i => i.ProductId == productId);
             await _cart.ReplaceOneAsync(c => c.UserId == userId, cart);
         }
+
+        public void AddCartToOrders(Order? order)
+        {
+            if (order == null) throw new ArgumentNullException(nameof(order));
+
+            _order.InsertOne(order);  // <-- insert the actual order object, not the collection
+        }
+
+
+
+
+
+        public async Task<bool> UpdateCartItemQuantity(string userId, string productId, int quantity)
+        {
+           
+            var cart = await _cart.Find(c => c.UserId == userId).FirstOrDefaultAsync();
+
+            if (cart == null)
+                return false;
+
+            var item = cart.Items.FirstOrDefault(i => i.ProductId == productId);
+            if (item == null)
+                return false;
+
+            item.Quantity = quantity;
+            item.SubTotal = item.Quantity * item.ProductPrice;
+
+            await _cart.ReplaceOneAsync(c => c.UserId == userId, cart, new ReplaceOptions { IsUpsert = true });
+
+            return true;
+        }
+
 
         public async Task ClearCart(string userId)
         {

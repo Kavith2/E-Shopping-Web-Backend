@@ -10,6 +10,12 @@ Debug/
 Release/
 
 # Others
+*.exe
+*.dll
+*.pdb
+*.user
+*.suo
+*.cache
 *.log
 *.nupkg
 *.DS_Store

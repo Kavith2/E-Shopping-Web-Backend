@@ -21,6 +21,8 @@ namespace Backend1.Data
         public IMongoCollection<User> Users => _database.GetCollection<User>("Users");
         public IMongoCollection<Cart> Cart => _database.GetCollection<Cart>("Cart");
 
+        public IMongoCollection<Order> Orders => _database.GetCollection<Order>("Orders");
+
     }
 
 

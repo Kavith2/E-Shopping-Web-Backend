@@ -8,13 +8,9 @@ namespace Backend1.IService
 
         List<User> GetAllUsers();
         void AddUser (User user);
-
         Task<User> UpdateUser(string id, User updateUser);
-
         Task<IActionResult> DeleteUser (string id);
-
         Task<User?> GetByUserName (string username);
-
         Task<User?> Authenticate(string email, string password);
 
 
