@@ -7,13 +7,23 @@ This project is designed as a template for online shopping platforms — fully c
 
 ## ✨ Features
 
-- ✅ User-friendly e-commerce storefront  
-- ✅ Product listing with categories and search  
-- ✅ Shopping cart and checkout flow  
-- ✅ Basic order management system  
-- ✅ Example payment flow (demo only, **not real payment**)  
-- ✅ Built with maintainable, clean code (frontend + backend)  
-- ✅ Cloud-ready architecture  
+🔐 JWT Authentication — Secure login & registration
+
+🧍 User Management — Register, login, and maintain user profiles
+
+📦 Product Management — CRUD operations for product catalog
+
+🛒 Cart Management — Add, remove, update items dynamically
+
+💳 Payment Integration — Cash on Delivery and Card checkout support
+
+🗃️ MongoDB — NoSQL document database for flexible schema
+
+📤 RESTful APIs — Designed for easy integration with Angular frontend
+
+🧩 Exception Handling — Custom middleware for consistent error responses
+
+🧪 Validation — Server-side model validation and error reporting 
 
 ---
 
