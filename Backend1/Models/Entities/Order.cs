@@ -12,9 +12,6 @@ namespace Backend1.Models.Entities
         [BsonElement("userId")]
         public string UserId { get; set; }
 
-        [BsonElement("totalPrice")]
-        public int TotalPrice { get; set; }
-
         [BsonElement("items")]
         public List<CartItem> Items { get; set; } = new();
     }
